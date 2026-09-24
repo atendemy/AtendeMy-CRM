@@ -201,7 +201,11 @@ export type PipelineConfigPatch = z.infer<typeof pipelineConfigPatchSchema>;
  */
 export const platformBrandingSchema = z.object({
   app_name: z.string().trim().min(1).max(120).nullable(),
-  logo_url: z.string().trim().url().max(2048).nullable(),
+  logo_url: z
+    .preprocess(
+      (val) => (typeof val === "string" && (val.trim() === "" || val.trim() === '"') ? null : val),
+      z.string().trim().url().max(2048).nullable(),
+    ),
   accent_hex: z
     .string()
     .trim()
