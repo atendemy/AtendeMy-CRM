@@ -992,6 +992,26 @@ nav a[href="/app/analise"] { --icon-color: #64748b; }
 /* Engrenagem de Configurações no rodapé */
 a[href="/app/settings"] { --icon-color: #94a3b8; }
 
+/* Admin Plataforma (Modo Master) */
+nav a[href="/admin/dashboard"] { --icon-color: #3b82f6; }
+nav a[href="/admin/inbox"] { --icon-color: #06b6d4; }
+nav a[href="/admin/tenants"] { --icon-color: #3b82f6; }
+nav a[href="/admin/audit"] { --icon-color: #8b5cf6; }
+nav a[href="/admin/lgpd"] { --icon-color: #ec4899; }
+nav a[href="/admin/incidents"] { --icon-color: #ef4444; }
+nav a[href="/admin/usage"] { --icon-color: #10b981; }
+nav a[href="/admin/users"] { --icon-color: #6366f1; }
+nav a[href="/admin/platform-admins"] { --icon-color: #f59e0b; }
+nav a[href="/admin/marca"] { --icon-color: #a855f7; }
+nav a[href="/admin/google"] { --icon-color: #4285f4; }
+nav a[href="/admin/meta"] { --icon-color: #06b6d4; }
+nav a[href="/admin/cadastro"] { --icon-color: #eab308; }
+nav a[href="/admin/email"] { --icon-color: #3b82f6; }
+nav a[href="/admin/sistema"] { --icon-color: #64748b; }
+nav a[href="/admin/destinos-internos"] { --icon-color: #10b981; }
+nav a[href="/admin/configuracao"] { --icon-color: #8b5cf6; }
+nav a[href="/admin/extensoes"] { --icon-color: #ec4899; }
+
 /* Estilo Base: Sombra redonda meio transparente em volta dos ícones */
 nav a svg, a[href^="/app/settings"] svg {
   color: var(--icon-color, currentColor);

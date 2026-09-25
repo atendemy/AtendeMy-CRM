@@ -153,7 +153,7 @@ export function AdminSidebar({ userEmail, variant = "desktop" }: AdminSidebarPro
                   : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
               )}
             >
-              <Icon size={18} weight={isActive ? "fill" : "regular"} aria-hidden />
+              <Icon size={18} weight="regular" aria-hidden />
               <span className="truncate">{t(item.label)}</span>
             </Link>
           );
