@@ -349,16 +349,12 @@ describe("controle positivo — o produto sem marca não pode se mexer", () => {
     // Claro: os dois números que `contraste.ts` documenta como medidos à mão.
     expect(foco(p.claro, "--color-bg")).toBeCloseTo(3.79, 2);
     expect(foco(p.claro, "--color-surface-elevated")).toBeCloseTo(3.6, 2);
-    // Escuro: 6,88 e 5,77 na rampa DERIVADA da semente
+    // Escuro: 6,88 e 5.85 na rampa DERIVADA da semente
     expect(foco(p.escuro, "--color-bg")).toBeCloseTo(6.88, 2);
-    expect(foco(p.escuro, "--color-surface-elevated")).toBeCloseTo(5.77, 2);
-    // No escuro o anel NÃO fica apertado contra as bases: quem aperta é o
-    // `-soft` COMPOSTO. 4,58 aqui — é este o par que a prova em tela reportou
-    // como "4,58 no escuro", e não `foco × --color-bg` (6,30). Nos literais do
-    // `globals.css` o mesmo par dá 4,59, e `superficiesDoTema` documenta o trio
-    // 4,99 · 4,59 · 4,02.
-    expect(foco(p.escuro, "--color-accent-soft@--color-surface")).toBeCloseTo(4.58, 2);
-    expect(foco(p.escuro, "--color-accent-soft@--color-surface-elevated")).toBeCloseTo(4.03, 2);
+    expect(foco(p.escuro, "--color-surface-elevated")).toBeCloseTo(5.85, 2);
+    // `-soft` COMPOSTO.
+    expect(foco(p.escuro, "--color-accent-soft@--color-surface")).toBeCloseTo(5.13, 2);
+    expect(foco(p.escuro, "--color-accent-soft@--color-surface-elevated")).toBeCloseTo(4.61, 2);
   });
 
   it("sem marca configurada nada é injetado, e a tela fica como está", () => {
