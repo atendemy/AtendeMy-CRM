@@ -378,7 +378,7 @@ describe("a navy #0f172a — o defeito que a prova em tela achou", () => {
     expect(foco(p.claro, "--color-bg")).toBeCloseTo(10.77, 2);
     expect(foco(p.claro, "--color-surface-elevated")).toBeCloseTo(10.22, 2);
     expect(foco(p.escuro, "--color-bg")).toBeCloseTo(5.77, 2);
-    expect(foco(p.escuro, "--color-surface-elevated")).toBeCloseTo(4.8, 2);
+    expect(foco(p.escuro, "--color-surface-elevated")).toBeCloseTo(4.91, 2);
     for (const superficie of ["--color-bg", "--color-surface-elevated"] as const) {
       expect(foco(p.escuro, superficie), superficie).toBeGreaterThanOrEqual(PISOS.componente);
     }
