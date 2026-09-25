@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { Client } = require('pg');
 
 const dbUrl = 'postgresql://postgres.fkqwveyzhoefoeejlgmb:a6%2ACsA%409axc5-jP@aws-1-eu-west-1.pooler.supabase.com:5432/postgres';
