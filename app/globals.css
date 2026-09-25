@@ -328,19 +328,19 @@
 
 [data-theme="dark"] {
   /* Surfaces (dark — drawn) */
-  --color-bg: #161510;
-  --color-surface: #1d1c17;
-  --color-surface-elevated: #272620;
+  --color-bg: #020914;
+  --color-surface: #061226;
+  --color-surface-elevated: #0a1c38;
   --color-overlay: rgba(0, 0, 0, 0.55);
 
   /* Text (dark) */
-  --color-text: #f5f4ef;
-  --color-text-muted: #8e8b7f;
-  --color-text-subtle: #605e54;
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
 
   /* Borders (dark) */
-  --color-border: #33312a;
-  --color-border-strong: #444239;
+  --color-border: #11274a;
+  --color-border-strong: #1c355d;
 
   /* Accent stays same hex stops; default shifts up for dark contrast */
   --color-accent-50:  #f3f6f1;
@@ -963,4 +963,56 @@
     transition: none;
     transform: none;
   }
+}
+
+/* Definição das cores por item do menu */
+nav a[href="/app/inbox"] { --icon-color: #3b82f6; }
+nav a[href="/app/radar"] { --icon-color: #f97316; }
+nav a[href="/app/agenda"] { --icon-color: #22c55e; }
+nav a[href="/app/templates"] { --icon-color: #eab308; }
+
+nav a[href="/app/kanban"] { --icon-color: #a855f7; }
+nav a[href="/app/contacts"] { --icon-color: #06b6d4; }
+nav a[href="/app/tasks"] { --icon-color: #10b981; }
+nav a[href="/app/crm"] { --icon-color: #64748b; }
+
+nav a[href="/app/ai/agents"] { --icon-color: #6366f1; }
+nav a[href="/app/ai/followups"] { --icon-color: #ec4899; }
+nav a[href="/app/ai/routers"] { --icon-color: #f43f5e; }
+nav a[href="/app/ai"] { --icon-color: #64748b; }
+
+nav a[href="/app/connections"] { --icon-color: #f59e0b; }
+nav a[href="/app/webhooks"] { --icon-color: #d946ef; }
+
+nav a[href="/app/metrics"] { --icon-color: #38bdf8; }
+nav a[href="/app/ads/meta"] { --icon-color: #fb7185; }
+nav a[href="/app/activities"] { --icon-color: #84cc16; }
+nav a[href="/app/analise"] { --icon-color: #64748b; }
+
+/* Engrenagem de Configurações no rodapé */
+a[href="/app/settings"] { --icon-color: #94a3b8; }
+
+/* Estilo Base: Sombra redonda meio transparente em volta dos ícones */
+nav a svg, a[href^="/app/settings"] svg {
+  color: var(--icon-color, currentColor);
+  background-color: color-mix(in srgb, var(--icon-color, currentColor) 15%, transparent);
+  border-radius: 50%;
+  padding: 4px;
+  margin-left: -4px;
+  margin-right: -4px;
+  box-shadow: 0 0 6px 0 color-mix(in srgb, var(--icon-color, currentColor) 25%, transparent);
+  transition: all 0.2s ease;
+}
+
+/* Quando passa o mouse por cima (Hover) */
+nav a:hover svg, a[href^="/app/settings"]:hover svg {
+  background-color: color-mix(in srgb, var(--icon-color, currentColor) 25%, transparent);
+  box-shadow: 0 0 8px 0 color-mix(in srgb, var(--icon-color, currentColor) 40%, transparent);
+}
+
+/* Quando está Selecionado/Clicado (Active) - Força ícone a não escurecer! */
+nav a[aria-current="page"] svg, a[aria-current="page"][href^="/app/settings"] svg {
+  color: #ffffff !important;
+  background-color: var(--icon-color, currentColor);
+  box-shadow: 0 0 12px 0 color-mix(in srgb, var(--icon-color, currentColor) 60%, transparent);
 }
