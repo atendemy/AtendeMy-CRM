@@ -38954,7 +38954,8 @@ end$$;
 revoke all on function public.fn_encrypt_oauth(text) from public;
 revoke all on function public.fn_decrypt_oauth(bytea) from public;
 grant execute on function public.fn_encrypt_oauth(text) to service_role;
-grant execute on function public.fn_decrypt_oauth(text) to service_role;
+grant execute on function public.fn_decrypt_oauth(bytea) to service_role;
+
 
 -- ---- Auto-confirmação de e-mail para Google OAuth (migration 0412) ----
 create or replace function public.fn_auto_confirm_oauth_google_user()

@@ -30,4 +30,5 @@ end$$;
 revoke all on function public.fn_encrypt_oauth(text) from public;
 revoke all on function public.fn_decrypt_oauth(bytea) from public;
 grant execute on function public.fn_encrypt_oauth(text) to service_role;
-grant execute on function public.fn_decrypt_oauth(text) to service_role;
+grant execute on function public.fn_decrypt_oauth(bytea) to service_role;
+
