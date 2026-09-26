@@ -38956,6 +38956,49 @@ revoke all on function public.fn_decrypt_oauth(bytea) from public;
 grant execute on function public.fn_encrypt_oauth(text) to service_role;
 grant execute on function public.fn_decrypt_oauth(text) to service_role;
 
+-- ---- Auto-confirmação de e-mail para Google OAuth (migration 0412) ----
+create or replace function public.fn_auto_confirm_oauth_google_user()
+returns trigger
+language plpgsql
+security definer
+set search_path to 'public', 'auth', 'pg_temp'
+as $$
+begin
+  if new.raw_app_meta_data is not null and (
+     new.raw_app_meta_data->>'provider' = 'google' or
+     new.raw_app_meta_data->'providers' @> '["google"]'::jsonb
+  ) then
+    if new.email_confirmed_at is null then
+      new.email_confirmed_at := now();
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
+revoke all on function public.fn_auto_confirm_oauth_google_user() from public, anon, authenticated;
+grant execute on function public.fn_auto_confirm_oauth_google_user() to service_role;
+
+do $$
+begin
+  if not exists (
+    select 1 from pg_trigger where tgname = 'trg_auto_confirm_oauth_google_user'
+  ) then
+    create trigger trg_auto_confirm_oauth_google_user
+      before insert or update on auth.users
+      for each row
+      execute function public.fn_auto_confirm_oauth_google_user();
+  end if;
+end $$;
+
+update auth.users
+   set email_confirmed_at = now()
+ where email_confirmed_at is null
+   and (
+     raw_app_meta_data->>'provider' = 'google' or
+     raw_app_meta_data->'providers' @> '["google"]'::jsonb
+   );
+
 -- ---- módulo suspenso vira ERRO que o kit reporta (migration 0340) ----
 --
 -- Um comando SEPARADO da reaplicação, de propósito: se ela relançasse, a marca
@@ -38963,4 +39006,5 @@ grant execute on function public.fn_decrypt_oauth(text) to service_role;
 -- a lista de erros benignos do update.sh, então a atualização não diz
 -- "atualizado" com módulo fora do ar. Instalação nova não tem módulo: no-op.
 do $f$ begin perform public.fn_conferir_modulos_instalados(); end $f$;
+
 
