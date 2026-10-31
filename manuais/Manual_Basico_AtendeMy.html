@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Manual de Instruções Básico</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #ffffff;
+      padding: 48px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .print-bar {
+      position: sticky;
+      top: 0;
+      background: #1e3a8a;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .print-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .print-btn:hover {
+      background: #2563eb;
+    }
+
+    h1 {
+      color: #1e3a8a;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 12px;
+    }
+
+    h2 {
+      color: #1e40af;
+      margin-top: 32px;
+      border-bottom: 1px solid #f3f4f6;
+      padding-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid #e5e7eb;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    blockquote {
+      border-left: 4px solid #3b82f6;
+      background: #eff6ff;
+      margin: 20px 0;
+      padding: 12px 20px;
+      border-radius: 0 8px 8px 0;
+      color: #1e40af;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+      color: #b91c1c;
+    }
+
+    pre {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    @media print {
+      .print-bar {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .container {
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="print-bar">
+    <span><strong>AtendeMy CRM</strong> — Manual de Instruções Básico</span>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir ou Salvar em PDF</button>
+  </div>
+  <div class="container" id="content"></div>
+  <script>
+    const markdown = "# Manual do Usu\u00e1rio \u2014 AtendeMy CRM (Guia B\u00e1sico Operacional)\n\n> **Vers\u00e3o:** 2.0  \n> **Para quem \u00e9 este manual:** Atendentes, Vendedores, Recepcionistas, Operadores de Suporte e toda a equipe que utiliza o sistema no dia a dia.  \n> **Objetivo:** Ensinar o passo a passo completo de como operar o AtendeMy CRM na rotina de atendimento, vendas, agendamentos e tarefas, trabalhando em perfeita sintonia com a Intelig\u00eancia Artificial.\n\n---\n\n## Sum\u00e1rio\n1. [Acesso \u00e0 Plataforma e Primeiro Login](#1-acesso-\u00e0-plataforma-e-primeiro-login)\n2. [Conhecendo a Interface de Trabalho](#2-conhecendo-a-interface-de-trabalho)\n3. [Opera\u00e7\u00e3o do Inbox (Atendimento WhatsApp em Tempo Real)](#3-opera\u00e7\u00e3o-do-inbox-atendimento-whatsapp-em-tempo-real)\n4. [Trabalhando em Dupla com a Intelig\u00eancia Artificial (Handoff)](#4-trabalhando-em-dupla-com-a-intelig\u00eancia-artificial-handoff)\n5. [Organiza\u00e7\u00e3o do Contato: Etiquetas, Notas Internas e Transfer\u00eancia](#5-organiza\u00e7\u00e3o-do-contato-etiquetas-notas-internas-e-transfer\u00eancia)\n6. [Respostas R\u00e1pidas com Atalho \"/\" (Templates)](#6-respostas-r\u00e1pidas-com-atalho--templates)\n7. [Radar de Atendimento (Resgate de Conversas Frias)](#7-radar-de-atendimento-resgate-de-conversas-frias)\n8. [Funil de Vendas e CRM (Kanban)](#8-funil-de-vendas-e-crm-kanban)\n9. [Agenda de Compromissos e Visitas](#9-agenda-de-compromissos-e-visitas)\n10. [Gest\u00e3o de Tarefas e Lembretes Di\u00e1rios](#10-gest\u00e3o-de-tarefas-e-lembretes-di\u00e1rios)\n11. [Guia de Solu\u00e7\u00e3o de D\u00favidas Frequentes](#11-guia-de-solu\u00e7\u00e3o-de-d\u00favidas-frequentes)\n\n---\n\n## 1. Acesso \u00e0 Plataforma e Primeiro Login\n\n### Passo a passo para entrar:\n1. Abra seu navegador de internet preferido (Google Chrome ou Microsoft Edge recomendados).\n2. Digite o endere\u00e7o do CRM: **`https://crm.atendemy.com.br`** (ou o link espec\u00edfico fornecido pela sua empresa).\n3. Na tela inicial de login, voc\u00ea tem duas op\u00e7\u00f5es de entrada:\n   * **Op\u00e7\u00e3o A (E-mail e Senha):** Digite seu e-mail cadastrado e sua senha. Clique no bot\u00e3o azul **Entrar**.\n   * **Op\u00e7\u00e3o B (Conta Google):** Se o seu e-mail corporativo for do Google/Gmail, basta clicar no bot\u00e3o **\"Continuar com Google\"** e selecionar sua conta.\n4. **Esqueceu sua senha?**  \n   Clique no link *\"Esqueci minha senha\"*, digite seu e-mail e voc\u00ea receber\u00e1 na hora um link para redefinir sua senha com seguran\u00e7a.\n\n---\n\n## 2. Conhecendo a Interface de Trabalho\n\nAo fazer login, voc\u00ea ter\u00e1 acesso ao painel principal:\n\n* **Menu Lateral Esquerdo:** Onde voc\u00ea encontra todos os m\u00f3dulos:\n  * **Atendimento:** Inbox, Radar, Agenda e Respostas R\u00e1pidas.\n  * **CRM:** Funis de Vendas (Kanban), Contatos, Tarefas e Propostas.\n  * **Configura\u00e7\u00f5es:** Seu perfil pessoal e dados da sua conta.\n* **Barra Superior:**\n  * **Alternador de Empresa:** Se voc\u00ea trabalha em mais de uma unidade ou neg\u00f3cio, alterne com 1 clique no canto superior esquerdo.\n  * **Busca Global (`Ctrl + K`):** Localize qualquer cliente, telefone ou neg\u00f3cio instantaneamente digitando o nome ou n\u00famero.\n  * **Perfil e Modo Escuro/Claro:** Alterne as cores da tela ou saia do sistema no canto superior direito.\n\n---\n\n## 3. Opera\u00e7\u00e3o do Inbox (Atendimento WhatsApp em Tempo Real)\n\nO **Inbox** (`Atendimento \u2192 Inbox` ou acesse `/app/inbox`) \u00e9 onde todas as mensagens de WhatsApp, Instagram e Facebook chegam em tempo real.\n\n```mermaid\nflowchart LR\n    A[Mensagem do Cliente] --> B[Aba Fila: Aguardando Voc\u00ea]\n    B --> C[Clique em 'Assumir']\n    C --> D[Voc\u00ea conversa no WhatsApp]\n    D --> E[Finalizou? 'Devolver para IA' ou 'Fechar']\n```\n\n### 3.1. Entendendo as Abas de Conversas (Topo da Lista)\nNo painel esquerdo do Inbox voc\u00ea ver\u00e1 4 abas essenciais:\n* **Fila:** Clientes que pediram para falar com uma pessoa ou cujo atendimento autom\u00e1tico da IA encerrou e precisa de uma a\u00e7\u00e3o humana urgente. **D\u00ea prioridade sempre a esta aba!**\n* **Minhas:** Todas as conversas que est\u00e3o sob sua responsabilidade no momento.\n* **Todas:** Vis\u00e3o geral de todos os atendimentos da empresa (incluindo os que a IA est\u00e1 tocando sozinha).\n* **Fechadas:** Hist\u00f3rico de conversas j\u00e1 resolvidas e arquivadas.\n\n### 3.2. Como responder o cliente no chat:\n1. Clique sobre a conversa desejada na lista.\n2. Na caixa de digita\u00e7\u00e3o inferior:\n   * **Mensagem de Texto:** Digite seu texto e aperte `Enter` para enviar.\n   * **\u00c1udio:** Clique no \u00edcone de microfone, fale e clique em enviar (o \u00e1udio \u00e9 gravado com clareza cristalina direto pelo navegador).\n   * **Fotos, V\u00eddeos e PDFs:** Clique no \u00edcone de clipe de papel e selecione os arquivos do seu computador.\n   * **Emojis e Figurinhas:** Use o bot\u00e3o de emoji para deixar o atendimento mais humanizado e descontra\u00eddo.\n\n---\n\n## 4. Trabalhando em Dupla com a Intelig\u00eancia Artificial (Handoff)\n\nNo AtendeMy, voc\u00ea n\u00e3o compete com o rob\u00f4: voc\u00eas trabalham juntos. O rob\u00f4 faz a triagem inicial e qualifica\u00e7\u00e3o, e voc\u00ea entra para fechar a venda ou tirar d\u00favidas espec\u00edficas.\n\n### 4.1. Como assumir uma conversa que a IA est\u00e1 atendendo:\n1. No topo da janela de chat, voc\u00ea ver\u00e1 um aviso indicando que a IA est\u00e1 respondendo.\n2. Clique no bot\u00e3o **\"Assumir Atendimento\"**.\n3. **O que acontece:** A IA \u00e9 **pausada instantaneamente** para aquele cliente. Ela n\u00e3o enviar\u00e1 nenhuma mensagem enquanto voc\u00ea estiver com o controle da conversa.\n4. Digite e converse livremente com o cliente.\n\n### 4.2. Como devolver a conversa para a IA:\nQuando voc\u00ea j\u00e1 tiver resolvido a d\u00favida do cliente e quiser que a IA continue tirando d\u00favidas gerais ou fazendo follow-up:\n1. No topo do chat, clique no bot\u00e3o **\"Devolver para IA\"**.\n2. A partir desse momento, a IA volta a responder as novas d\u00favidas do cliente de forma autom\u00e1tica.\n\n### 4.3. Como finalizar/fechar uma conversa:\nQuando o assunto estiver 100% resolvido:\n1. Clique no bot\u00e3o **\"Fechar Conversa\"** (ou \u00edcone de check).\n2. A conversa sai da sua lista de abertas e vai para o arquivo. Se o cliente mandar um novo \"Oi\" no futuro, a conversa reabre automaticamente sem perder o hist\u00f3rico.\n\n---\n\n## 5. Organiza\u00e7\u00e3o do Contato: Etiquetas, Notas Internas e Transfer\u00eancia\n\nNa lateral direita da tela de chat, voc\u00ea tem acesso \u00e0 ficha viva do cliente:\n\n### 5.1. Adicionando Etiquetas (Tags)\nAs etiquetas ajudam a categorizar o perfil do cliente com facilidade:\n1. Na barra lateral direita, localize a se\u00e7\u00e3o **Etiquetas**.\n2. Clique em **+ Adicionar** e selecione marcadores como:\n   * `Lead Quente`\n   * `Or\u00e7amento Enviado`\n   * `Aguardando Pagamento`\n   * `Contrato Fechado`\n3. Voc\u00ea pode remover uma etiqueta a qualquer momento clicando no \"X\" ao lado dela.\n\n### 5.2. Criando Notas Internas (Privadas para a Equipe)\nNotas internas servem para deixar avisos para outros colegas de equipe sem que o cliente veja no WhatsApp:\n1. Na barra lateral direita, clique na aba **Notas**.\n2. Digite o recado. Exemplo:  \n   *\"Cliente informou que tem prefer\u00eancia por loca\u00e7\u00e3o no s\u00e1bado \u00e0 tarde. J\u00e1 enviei a tabela com desconto de 10%.\"*\n3. Clique em **Salvar Nota**.  \n   > \ud83d\udd12 **Importante:** O cliente **NUNCA** recebe as notas internas. Elas ficam vis\u00edveis apenas para os atendentes logados no sistema.\n\n### 5.3. Transferindo para outro Atendente\n1. No topo da conversa, clique no menu de op\u00e7\u00f5es (tr\u00eas pontinhos) ou no avatar do respons\u00e1vel.\n2. Selecione **Transferir Atendimento**.\n3. Escolha o colega de equipe na lista.\n4. A conversa sair\u00e1 da sua aba \"Minhas\" e aparecer\u00e1 imediatamente na tela do colega escolhido.\n\n---\n\n## 6. Respostas R\u00e1pidas com Atalho \"/\" (Templates)\n\nPara n\u00e3o perder tempo digitando textos repetitivos (endere\u00e7o, chave Pix, cat\u00e1logo, pol\u00edticas de cancelamento):\n\n1. V\u00e1 em `Atendimento \u2192 Respostas r\u00e1pidas` (`/app/templates`) para conferir as mensagens prontas salvas.\n2. **Como usar no meio do chat:**\n   * No campo de mensagem do cliente, digite apenas uma barra: **`/`**\n   * Uma lista suspensa com todas as respostas prontas aparecer\u00e1 na tela.\n   * Comece a digitar o atalho (ex: `/pix`, `/endereco`, `/tabela`).\n   * Pressione `Enter` e o texto completo ser\u00e1 preenchido automaticamente!\n   * Revise se quiser alterar algum detalhe e clique em Enviar.\n\n---\n\n## 7. Radar de Atendimento (Resgate de Conversas Frias)\n\nAcesse `Atendimento \u2192 Radar` (`/app/radar`).\n\n* **Para que serve:** O Radar monitora todas as conversas e identifica clientes que foram deixados sem resposta ou que pararam de responder h\u00e1 algum tempo.\n* **Cores de Alerta:**\n  * \ud83d\udd34 **Vermelho:** Atendimento cr\u00edtico parado h\u00e1 muitas horas ou dias.\n  * \ud83d\udfe1 **Amarelo:** Atendimento esfriando que merece aten\u00e7\u00e3o hoje.\n* **Como agir:** Clique direto sobre o card do cliente no Radar para abrir o chat correspondente e resgatar a venda antes que o cliente v\u00e1 para o concorrente.\n\n---\n\n## 8. Funil de Vendas e CRM (Kanban)\n\nAcesse `CRM \u2192 Funis` (`/app/kanban`).\n\nO funil organiza visualmente as oportunidades em colunas:\n\n```\n[ Novo Contato ]  \u2794  [ Visita Agendada ]  \u2794  [ Proposta Enviada ]  \u2794  [ Fechado / Ganho ]\n```\n\n### 8.1. Como criar um novo neg\u00f3cio no funil:\n1. No topo da coluna correspondente (geralmente a primeira, ex: *Novo Lead*), clique em **+ Novo Neg\u00f3cio**.\n2. Selecione o **Cliente** (busque pelo nome ou telefone).\n3. Preencha o **T\u00edtulo** da oportunidade (ex: *Loca\u00e7\u00e3o Anivers\u00e1rio 15 Anos - F\u00e1bio*).\n4. Informe o **Valor estimado** (`R$`).\n5. Clique em **Salvar**.\n\n### 8.2. Movimentando as etapas da venda:\n* Para avan\u00e7ar o cliente de fase, basta clicar no card dele, segurar e **arrastar para a coluna ao lado**.\n* **Registrando Ganho \ud83c\udf89:** Quando o contrato for assinado e o pagamento confirmado, arraste o card para a coluna **Ganho**. O valor entrar\u00e1 imediatamente nos relat\u00f3rios de faturamento da empresa.\n* **Registrando Perda \u274c:** Se o cliente desistir, arraste para **Perdido** e selecione o motivo real (ex: *Achou caro*, *Data indispon\u00edvel*, *Fechou com outro*). Isso ajuda a empresa a melhorar o produto.\n\n---\n\n## 9. Agenda de Compromissos e Visitas\n\nAcesse `Atendimento \u2192 Agenda` (`/app/agenda`).\n\nA agenda do AtendeMy sincroniza em duas vias com o **Google Calendar** da sua empresa. Quando um hor\u00e1rio \u00e9 reservado aqui, ele bloqueia no Google Agenda; quando algu\u00e9m marca algo no Google Agenda, o AtendeMy bloqueia a data para n\u00e3o haver agendamentos duplicados.\n\n### 9.1. Como agendar um compromisso manualmente:\n1. Clique no bot\u00e3o azul **\"Novo Agendamento\"** no canto superior direito (ou clique diretamente no dia/hor\u00e1rio vago da grade).\n2. Selecione o **Tipo de Agendamento** (ex: *Reserva Espa\u00e7o Lazer*, *Visita Presencial*, *Reuni\u00e3o de Alinhamento*).\n3. Selecione o **Cliente** associado.\n4. Defina a **Data de In\u00edcio, Hor\u00e1rio e T\u00e9rmino**.\n5. Escolha o **Profissional Respons\u00e1vel** que ir\u00e1 atender.\n6. Clique em **Confirmar Agendamento**.\n   * O sistema salva no CRM, atualiza o Google Calendar do atendente e pode disparar um lembrete autom\u00e1tico no WhatsApp do cliente.\n\n---\n\n## 10. Gest\u00e3o de Tarefas e Lembretes Di\u00e1rios\n\nAcesse `CRM \u2192 Tarefas` (`/app/tasks`).\n\n* **O que \u00e9:** Sua lista pessoal de afazeres para n\u00e3o esquecer nenhum compromisso de trabalho.\n* **Como criar:**\n  1. Clique em **Nova Tarefa**.\n  2. Digite a descri\u00e7\u00e3o (ex: *\"Cobrar comprovante de pagamento de Carla\"* ou *\"Ligar para confirmar n\u00famero de convidados\"*).\n  3. Vincule ao contato correspondente.\n  4. Defina o prazo final (Data e Hora).\n* **Concluindo:** Ao finalizar a a\u00e7\u00e3o, basta marcar a caixinha redonda ao lado da tarefa. Ela ser\u00e1 riscada e contabilizada no seu hist\u00f3rico de produtividade.\n\n---\n\n## 11. Guia de Solu\u00e7\u00e3o de D\u00favidas Frequentes\n\n| Situa\u00e7\u00e3o | Causa Prov\u00e1vel | Solu\u00e7\u00e3o |\n|---|---|---|\n| **A IA est\u00e1 respondendo enquanto eu tento falar** | O atendimento ainda n\u00e3o foi assumido por voc\u00ea. | Clique no bot\u00e3o **\"Assumir Atendimento\"** no topo do chat. |\n| **O cliente mandou \u00e1udio e n\u00e3o consigo ouvir** | \u00c1udio ainda processando ou volume do navegador mudo. | Verifique o som do computador ou clique com bot\u00e3o direito no \u00e1udio para recarregar. |\n| **N\u00e3o encontro um cliente antigo na lista** | A conversa pode ter sido fechada anteriormente. | Clique na aba **\"Fechadas\"** ou use a busca global (`Ctrl + K`) digitando o telefone dele. |\n| **Apareceu uma tarja vermelha \"Conex\u00e3o desconectada\"** | O aparelho celular do WhatsApp perdeu internet ou deslogou. | Avise imediatamente o gestor ou administrador da empresa para escanear o QR Code em *Canais*. |\n| **Quero agendar uma data para daqui a 4 ou 5 meses** | Janela de agendamento do sistema. | O sistema est\u00e1 configurado para ler at\u00e9 **180 dias para frente**. Pode avan\u00e7ar o m\u00eas normalmente na grade! |\n";
+    document.getElementById('content').innerHTML = marked.parse(markdown);
+  </script>
+</body>
+
+</html>
